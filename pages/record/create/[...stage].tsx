@@ -9,13 +9,15 @@ type FormData = {
 const formSteps = [
   {
     Fields: () => {
-      const { errors } = useFormikContext<FormData>();
+      const { errors, values } = useFormikContext<FormData>();
 
       return (
         <>
           <label htmlFor="firstName">First Name</label>
           <Field id="firstName" name="firstName" placeholder="Jane" />
           {errors.firstName && <div>{errors.firstName}</div>}
+
+          {values.firstName === "Chris" ? <div>Hello, world!</div> : null}
         </>
       );
     },
